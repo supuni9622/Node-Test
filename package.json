@@ -1,0 +1,28 @@
+{
+  "name": "node-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supuni9622/Node-Test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/supuni9622/Node-Test/issues"
+  },
+  "homepage": "https://github.com/supuni9622/Node-Test#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "request": "^2.88.2",
+    "requestretry": "^7.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0"
+  }
+}
