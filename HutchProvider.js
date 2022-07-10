@@ -94,7 +94,7 @@ const sendMessages = (message, routeMetadata, callback, send)=> {
 
                  if(resultBody){
 
-                    console.log("resultBody.status", resultBody.status)
+                    console.log("resultBody.status", resultBody)
                     if (resultBody.status === 401){
                         TokenUtils.renewToken(`${process.env.HUTCH_BASE_URL}token/accessToken`, 
                         refreshToken,
@@ -111,7 +111,9 @@ const sendMessages = (message, routeMetadata, callback, send)=> {
                      }
                     );
                     }
-                    if (resultBody.status === 200) {
+                    if (resultBody.serverRef) {
+
+                        console.log("dddddd")
 
                        message.status = messageStatus.SUCCESS;
                        message.provider_response = resultBody;
@@ -128,6 +130,7 @@ const sendMessages = (message, routeMetadata, callback, send)=> {
                  message.sent_on = new Date();
                  message.modified_on = message.sent_on;
                  callback(null, message);
+                 console.log("message", message);
              }
          }
      );

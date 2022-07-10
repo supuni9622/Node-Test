@@ -15,7 +15,7 @@ const messageData = {
 
 hutchProvider2._send(messageData,null,()=>{console.log("done")});
 
-// hutchProvider._send(messageData,null,()=>{console.log("done")});
+hutchProvider._send(messageData,null,()=>{console.log("done")});
 // hutchProvider2._send(messageData,null,()=>{console.log("done")});
 // hutchProvider3._send(messageData,null,()=>{console.log("done")});
 // hutchProvider4._send(messageData,null,()=>{console.log("done")});

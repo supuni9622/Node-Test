@@ -27,6 +27,7 @@ const HUTCH_BASE_URL="https://bsms.hutch.lk/api/";
 const sendMessages = (message, routeMetadata, callback, accessToken, refreshToken) => {
 
     const payload = {
+        "campaignName": "Test 1",
         "mask" : message.sender_id,
         "numbers" : message.mobile_number,
         "content" : message.message,
