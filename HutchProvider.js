@@ -48,7 +48,7 @@ let accessToken = "", refreshToken = "";
 const sendMessages = (message, routeMetadata, callback, send)=> {
 
     const payload = {
-        "campaign": "Test 1",
+        "campaignName": "Test 1",
         "mask" : message.sender_id,
         "numbers" : message.mobile_number,
         "content" : message.message,
