@@ -48,14 +48,14 @@ let accessToken = "", refreshToken = "";
 const sendMessages = (message, routeMetadata, callback, send)=> {
 
     const payload = {
-        "campaignName": "Test 1",
+        "campaignName": "ShoutOUT",
         "mask" : message.sender_id,
         "numbers" : message.mobile_number,
         "content" : message.message,
         "deliveryReportRequest": true
     };
 
-    console.log("payload", payload);
+   // console.log("payload", payload);
 
     if(accessToken){
 
@@ -87,14 +87,14 @@ const sendMessages = (message, routeMetadata, callback, send)=> {
                  console.log('error submitting to hutch ', error);
                  callback(null, error);
              } else {
-                console.log('elapsed time %s ms', result.elapsedTime);
-                console.log('attempts %s', result.attempts);
+                // console.log('elapsed time %s ms', result.elapsedTime);
+                // console.log('attempts %s', result.attempts);
                  const resultBody = JSON.parse(result.body);
-                 console.log('hutch response', result.body );
+                //  console.log('hutch response', result.body );
 
                  if(resultBody){
 
-                    console.log("resultBody.status", resultBody)
+                   // console.log("resultBody.status", resultBody)
                     if (resultBody.status === 401){
                         TokenUtils.renewToken(`${process.env.HUTCH_BASE_URL}token/accessToken`, 
                         refreshToken,
@@ -103,7 +103,7 @@ const sendMessages = (message, routeMetadata, callback, send)=> {
                              console.log('sending error', error);
                          } else {
          
-                             console.log("tokens",result)
+                            // console.log("tokens",result)
                              accessToken = result.accessToken;
                              sendMessages(message, routeMetadata, callback)
                              
@@ -113,8 +113,6 @@ const sendMessages = (message, routeMetadata, callback, send)=> {
                     }
                     if (resultBody.serverRef) {
 
-                        console.log("dddddd")
-
                        message.status = messageStatus.SUCCESS;
                        message.provider_response = resultBody;
                             
@@ -123,7 +121,7 @@ const sendMessages = (message, routeMetadata, callback, send)=> {
                            message.status = messageStatus.UNKNOWN;
                    }
                  }else {
-                    console.log("Http response:" + JSON.stringify(result));
+                    //console.log("Http response:" + JSON.stringify(result));
                     message.status = messageStatus.INTERNAL_ERROR;
                 }
                 

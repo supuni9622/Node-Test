@@ -64,14 +64,14 @@ const sendMessages = (message, routeMetadata, callback, accessToken, refreshToke
                  console.log('error submitting to hutch ', error);
                  callback(null, error);
              } else {
-                console.log('elapsed time %s ms', result.elapsedTime);
-                console.log('attempts %s', result.attempts);
+              //  console.log('elapsed time %s ms', result.elapsedTime);
+                //console.log('attempts %s', result.attempts);
                  const resultBody = JSON.parse(result.body);
-                 console.log('hutch response', result.body );
+                // console.log('hutch response', result.body );
 
                  if(resultBody){
 
-                    console.log("resultBody.status", resultBody.status)
+                  //  console.log("resultBody.status", resultBody.status)
                     if (resultBody.status === 401){
                         TokenUtils.renewToken(`${HUTCH_BASE_URL}token/accessToken`, 
                         refreshToken,
@@ -80,7 +80,7 @@ const sendMessages = (message, routeMetadata, callback, accessToken, refreshToke
                              console.log('sending error', error);
                          } else {
          
-                             console.log("tokens",result)
+                             //console.log("tokens",result)
                              accessToken = result.accessToken;
                              sendMessages(message, routeMetadata, callback)
                              
@@ -88,7 +88,7 @@ const sendMessages = (message, routeMetadata, callback, accessToken, refreshToke
                      }
                     );
                     }
-                    if (resultBody.status === 200) {
+                    if (resultBody.serverRef) {
 
                        message.status = messageStatus.SUCCESS;
                        message.provider_response = resultBody;
@@ -98,13 +98,14 @@ const sendMessages = (message, routeMetadata, callback, accessToken, refreshToke
                            message.status = messageStatus.UNKNOWN;
                    }
                  }else {
-                    console.log("Http response:" + JSON.stringify(result));
+                   // console.log("Http response:" + JSON.stringify(result));
                     message.status = messageStatus.INTERNAL_ERROR;
                 }
                 
                  message.sent_on = new Date();
                  message.modified_on = message.sent_on;
                  callback(null, message);
+                 console.log("message", message);
              }
          }
      );
