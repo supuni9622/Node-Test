@@ -20,10 +20,6 @@
     INVALID_TRANSPORT: "1028"
 };
 
-// const HUTCH_USERNAME="administrator+Shotout_2@getshoutout.com";
-// const HUTCH_PASSWORD="uJC32T8kwsyQAGg@";
-// const HUTCH_BASE_URL="https://bsms.hutch.lk/api/";
-
 let accessToken = "", refreshToken = "";
 
 // const generateTokens = () => {
